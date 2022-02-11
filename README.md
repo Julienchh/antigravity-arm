@@ -4,7 +4,7 @@
 
 <img src="https://via.placeholder.com/900x300.png?text=Picture+or+video+illustrating+the+most+your+project"> |
 
-[User documentation](docs/user) • [Developer documentation](docs/developer) • [Bibliography](docs/bibliography)
+[User documentation](docs/user) • [Developer documentation](docs/developer) • [Report](docs/report) • [Bibliography](docs/bibliography)
   
 # In short...
 
