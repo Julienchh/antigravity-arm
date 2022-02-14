@@ -23,6 +23,7 @@ Visitors dislike long texts. Be **concise** and **convincing** to show the poten
 | 💼 **Client**                |  Name of your Client *(1)* |
 | 🔒 **Confidentiality**       | **Public** or **Private** *(1)* |
 | ⚖️ **License**               |  [Choose a license](https://choosealicense.com/) *(1)*  |
+| 👨‍👨‍👦 **Authors**               |  Student names, with a link to their profile  |
 
 
 *(1) Make a choice and update the repository accordingly: the visibility in the settings and remplace the [LICENSE](./LICENSE) file*
