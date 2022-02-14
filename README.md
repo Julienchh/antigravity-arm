@@ -5,12 +5,12 @@ Replace this description by a sentence summarizing your project.
 
 <img src="https://via.placeholder.com/900x300.png?text=Picture+or+video+illustrating+the+most+your+project"> 
 
-[📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Report](docs/report) • [📚 Bibliography](docs/bibliography)
+[📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography)
   
 ## 🚀 This project in short
-This summary for the visitors who fly over your work and cannot read the whole documentation. 
+This paragraph is for the visitors who fly over your work and cannot read the whole documentation. They dislike long texts.
 
-Visitors dislike long texts. Be **concise** and **convincing** to show the potential of your project. Be **honest** and list the limitations.  
+Be **concise** and **convincing** to show the potential of your project. Be **honest** and list the limitations.  
 
 * The context and the intented users
 * The problems solved by your projects
