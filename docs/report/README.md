@@ -1,6 +1,8 @@
-# Report
 
-## Specifications
+
+# 📖 Report
+
+## ⁉️ Specifications
 
 Describe the **context** and the **need** that forced your client to submit this project to you.
 
@@ -8,14 +10,14 @@ Describe what is the **input** of your project, such as existing software or har
 
 Describe what is the **expected output** of your project. Make sure that your contribution to this project is explicit.
 
-## Implemented approch
+## 🔎 Implemented approch
 
 Describe your **approach** and how you proceeded to solve the problems reported by the client
  the work to solve this problem.
 
 Add links to relevant sections to your user documentation and developer documentation but do not duplicate information.
 
-## Analysis of results
+## 📈 Analysis of results
 
 **Qualify** and **quantify** your achievements. Make measurements from your work, e.g.:
 
