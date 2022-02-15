@@ -7,7 +7,7 @@ Replace this description by a sentence summarizing your project.
 
 [📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography)
   
-## 🚀 This project in short
+## 📄 This project in short
 This paragraph is for the visitors who fly over your work and cannot read the whole documentation. They dislike long texts.
 
 Be **concise** and **convincing** to show the potential of your project. Be **honest** and list the limitations.  
@@ -15,11 +15,17 @@ Be **concise** and **convincing** to show the potential of your project. Be **ho
 * The context and the intented users
 * The problems solved by your projects
 * How it solves them
-* A Quickstart (*few lines of code to launch the main feature of your project*) 
+
+## 🚀 Quickstart
+
+* **Install instructions**: List of software/hardware dependencies, and instructions to install them if relevant
+* **Launch instructions**: Few lines of code to launch the main feature of your project
 
 
-| About this project                   |        |
-|:------------------------------------:|:------------------------:|
+## 🔍 About this project
+
+|       |        |
+|:----------------------------:|:------------------------:|
 | 💼 **Client**                |  Name of your Client *(1)* |
 | 🔒 **Confidentiality**       | **Public** or **Private** *(1)* |
 | ⚖️ **License**               |  [Choose a license](https://choosealicense.com/) *(1)*  |
