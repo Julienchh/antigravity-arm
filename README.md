@@ -25,14 +25,14 @@ Be **concise** and **convincing** to show the potential of your project. Be **ho
 ## 🔍 About this project
 
 |       |        |
-|:----------------------------:|:------------------------:|
-| 💼 **Client**                |  Name of your Client *(1)* |
-| 🔒 **Confidentiality**       | **Public** or **Private** *(1)* |
-| ⚖️ **License**               |  [Choose a license](https://choosealicense.com/) *(1)*  |
-| 👨‍👨‍👦 **Authors**               |  Student names, with a link to their profile  |
+|:----------------------------:|:-----------------------------------------------------------------------:|
+| 💼 **Client**                |  Name of your Client *(1)*                                              |
+| 🔒 **Confidentiality**       | **Public** or **Private** *(1)*                                         |
+| ⚖️ **License**               |  [Choose a license](https://choosealicense.com/) *(1)*                  |
+| 👨‍👨‍👦 **Authors**               |  Student names, with a link to their social media profile or website    |
 
 
-*(1) Make a choice and update the repository accordingly: the visibility in the settings and remplace the [LICENSE](./LICENSE) file*
+*(1) Refer to your client to make a choice. Then update the repository accordingly: the visibility in the settings and replace the [LICENSE](./LICENSE) file.*
 
 ## ✔️ Additional advices
 
