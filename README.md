@@ -3,7 +3,7 @@
 **Description:** Template for deliverables of robotics projects at Bordeaux-INP.
 Replace this description by a sentence summarizing your project.
 
-<img src="https://via.placeholder.com/900x300.png?text=Picture+or+video+illustrating+the+most+your+project"> 
+<img src="https://via.placeholder.com/900x300.png?text=Video+illustrating+your+project,+or+picture"> 
 
 [📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography) • [⚠️ Risk Analysis](docs/risk)
   
@@ -16,11 +16,12 @@ Be **concise** and **convincing** to show the potential of your project. Be **ho
 * The problems solved by your projects
 * How it solves them
 
-## 🚀 Quickstart
+## 🚀 Quickstart (if relevant)
 
 * **Install instructions**: List of software/hardware dependencies, and instructions to install them if relevant
 * **Launch instructions**: Few lines of code to launch the main feature of your project
 
+If this is written in user or dev docs, provide links.
 
 ## 🔍 About this project
 
@@ -36,9 +37,10 @@ Be **concise** and **convincing** to show the potential of your project. Be **ho
 
 ## ✔️ Additional advices
 
-* Do not make **passwords** and secret keys public. If private data must be pushed online, replace it by a random string and a warning in the documentation telling to replace it.
-* Avoid **long sentences**. Often, bullet points are easier to read.
-* **Illustrate** your reports. Use colored plots, schematics and pictures but do not abuse of them.
+* Do not make **passwords** and secret keys public. If you have to, replace it by a random string and a warning in the doc telling to replace it
+* Avoid **long sentences**. Often, bullet points are easier to read
+* **Illustrate** your reports. Use colored plots, schematics and pictures. But do not abuse of them
 * Do not **duplicate** information. If it may be relevant at several places, make links
-* **English** is the universal langage worldwide. Write all engineering documents in English.
-* Read the instructions of the current template and delete them. Keep only your writings.
+* **English** is the universal langage worldwide. Write all engineering documents in English
+* Choose carefully **what sections** apply to your project and delete/add anything from the template that you think relevant
+* Remove anything that would **pollute** reading, including these instructions and irrelevant sections
