@@ -22,6 +22,7 @@ $J_\Delta$ | Moment of inertia of the solid | $kg \cdot m^2$
 $V$ | Solid's volume | $m^3$ 
 $r_\Delta$ | Distance to each point from the solid's rotation axis $\Delta$ | $m$ 
 $\rho$ | Material density | $kg.m^{-3}$ 
+$m$ | Arm mass | $kg$ 
 $dm$ | Elementary mass | $kg$ 
 $l$ | Solid's height | $m$ 
 $e$ | Solid's thickness | $m$ 
@@ -54,6 +55,13 @@ $$
 
 $$T_m = b \omega$$
 
+### Center of mass
+
+$$R = \dfrac{1}{m} {\int\int\int}_V \rho(r)r\mathrm{d}V $$
+
+In the case of a homogeneously distributed ruler, one gets the following:
+
+$$\dfrac{1}{m} {\int\int\int}_V \rho(r)r\mathrm{d}V = \dfrac{el\rho}{m} \int_0^L r\mathrm{d}r = \dfrac{L}{2}$$
 ### Motor torque
 
 $$T_m = T_s + T_f$$
