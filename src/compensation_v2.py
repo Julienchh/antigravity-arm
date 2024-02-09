@@ -16,10 +16,10 @@ import numpy as np
 
 DXL_ID = 20
 PORT = "/dev/ttyUSB0"
-MASSE = 0.08 # Masse de l'objet en kg
-DISTANCE = 0.25 #8 #0.25  # Distance de la masse à l'axe de rotation en mètres
-GRAVITE = 9.81  # m/s²
-OFFSET = 90.  # Offset de l'angle de la masse par rapport à l'axe de rotation en degrés
+MASS = 0.08 # Object mass in kg
+DISTANCE = 0.25 #8 #0.25  # Distance from the rotation axis in meters
+GRAVITY = 9.81  # m/s²
+OFFSET = 90.  # Offset in degrees
 last_position = None
 last_torque = None
 
@@ -41,89 +41,53 @@ compensation_mode = {
     0:"current", 16:"tension", 3:"position", 4:"position"
 }
 
-def calculer_couple_contre_gravite(masse, gravite, distance, angle_degrees):
+def compute_gravity_torque(mass, gravity, distance):
     """
-    Retourne la force nécessaire pour contrebalancer la gravité.
-    masse: masse de l'objet en kg
-    gravite: accélération due à la gravité en m/s²
-    distance: distance de la masse à l'axe de rotation en mètres
-    angle_degrees: angle de l'axe de rotation en degrés
+    Return the torque needed to compensate the gravity force.
+    mass: mass of the object in kg
+    gravity: gravity acceleration in m/s²
+    distance: distance from the rotation axis in meters
     """
-    angle_radians = math.radians(angle_degrees)
-
-    moment_gravite = masse * gravite * distance
-    return moment_gravite
+    gravity_moment = mass * gravity * distance
+    return gravity_moment
 
 def friction(x, a, b, c, d, e, f, g, h):
+    """
+    Polynomial function to model the friction.
+    """
     return np.where(x < 0, a * x ** 3 + b * x ** 2 + c * x + d, np.where(x > 0, e * x ** 3 + f * x ** 2 + g * x + h, 0))
 
-def ajuster_position_moteur(motor):
+def adjust_motor_position(motor):
     global last_position
     coeffs = [-0.12127746, -0.56061302, -0.47001329, -0.26110969, -0.13974794, 0.59132029, -0.4856983, 0.27422605]
 
 
     position = motor.position +OFFSET
-    position_actuelle = round(position, 1)
+    current_position = round(position, 1)
     eps = 0.1
-    facteur = 1
+    factor = 1
 
-    couple_gravite = calculer_couple_contre_gravite(
-        MASSE, GRAVITE, DISTANCE, position_actuelle
+    gravity_torque = compute_gravity_torque(
+        MASS, GRAVITY, DISTANCE
     ) + friction(motor.velocity * (np.pi / 30), *coeffs)
 
     if position - last_position > eps:
-        couple_gravite *= -math.cos(math.radians(position))
+        gravity_torque *= -math.cos(math.radians(position))
     elif position - last_position < -eps:
-        couple_gravite *= -math.sin(math.radians(position))
+        gravity_torque *= -math.sin(math.radians(position))
 
     if compensation_mode[motor.mode] == "tension":
-        motor.torque = couple_gravite
+        motor.torque = gravity_torque
     elif compensation_mode[motor.mode] == "current":
-        motor.torque_current = couple_gravite
+        motor.torque_current = gravity_torque
     elif compensation_mode[motor.mode] == "position":
-        motor.goal_position = position_actuelle + facteur * couple_gravite - OFFSET
+        motor.goal_position = current_position + factor * gravity_torque - OFFSET
 
     last_position = position
 
-def find_mass(motor):
-    matplotlib.use("GTK3Agg")
-
-    motor.motor_tension = 0
-    motor.torque = 0.
-
-    torques = []
-    positions = []
-
-    # 6.3
-    for torque in range(0, 2000):
-        motor.torque = torque / 1000
-
-        # Use multi-sampling
-        torques.append(motor.torque)
-        positions.append(motor.motor_tension)
-        print(f"Done {torques[-1]}")
-
-        if torques[-1] >= 0.22:
-            break
-
-
-        # sleep(.3)
-
-    torques = np.array(torques)
-    positions = np.array(positions)
-
-    write_in_file(torques, "torques.txt")
-    write_in_file(positions, "positions.txt")
-
-    fig, ax = plt.subplots()
-    plt.plot(torques, positions, "yo", label="")
-    plt.legend()
-
-    plt.show()
-
 input_tension = 12.78
 
-""" # Lock all other motors
+""" # Lock all other motors when working on reachy
 protocol_v2_motors = [11, 12, 13]
 positions = [90, 180, 180]
 with pypot.dynamixel.Dxl320IO(PORT) as dxl_io:
@@ -153,7 +117,7 @@ motor = Motor(dxl_io, DXL_ID, control_tables.MX_106, configs['MX-106']['resistan
 
 motor.torque_enabled = False
 # 16 = PWM, 1 = Velocity, 3 = Position
-motor.mode = motor_modes["position"]["multi-turn"]
+motor.mode = motor_modes["pwm"]
 motor.torque_enabled = True
 motor.current = 0
 
@@ -168,9 +132,8 @@ try:
     #motor.PID = [1, 0, 0]
 
     while True:
-        ajuster_position_moteur(motor)
+        adjust_motor_position(motor)
         print(f"Position : {motor.position+OFFSET} degrees")
-        # ajuster_position_moteur_cheat(motor)
 
         
 except KeyboardInterrupt:
