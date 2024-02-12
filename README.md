@@ -3,7 +3,7 @@
 **Description:** Project aiming to counter the effect of gravity on a one-degree of liberty arm (i.e finger) by programming a torque control command on Dynamixel motor.
 
 <p style="text-align: center;">
-![demo](https://github.com/Julienchh/antigravity-arm/blob/main/assets/demo.gif?raw=true)</p>
+![demo](./assets/demo.gif)</p>
 
 [📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography) • [⚠️ Risk Analysis](docs/risk)
   
