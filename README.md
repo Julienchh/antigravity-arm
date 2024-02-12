@@ -16,7 +16,7 @@ In this project, you will find a **Python module** that allows you to control yo
 * Use of pypot library ;
 * Constants available for Dynamixel MX-64 and Dynamixel MX-106 (code is available to determine constants for other models).
 
-## 🚀 Quickstart (if relevant)
+## 🚀 Quickstart 
 
 ### **Install instructions**:
 
