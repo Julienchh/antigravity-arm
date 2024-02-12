@@ -4,13 +4,29 @@
 
 ## ⁉️ Specifications
 
-Describe the **context** and the **need** that forced your client to submit this project to you.
+First, let us introduce the ins and outs of the subject at hand: the anti-gravity arm. That is, we present what was demanded of us and why, and what was expected to come out of this work.
 
-Describe what is the **input** of your project, such as existing software or hardware you will rely on, and their maturity if they are ongoing work.
+### Context 
 
-Describe what is the **expected output** of your project. Make sure that your contribution to this project is explicit.
+This project was conducted in the context of the development of the robot Reachy, created by Pollen Robotics. This humanoid robot aimed to be **interacting with humans**, which poses **security problematics**. Indeed, the arms of the Reachy are articulated using Dynamixel servomotors ; those are controlled using position command which uses maximum torque. Thus, the positioning of both arms may cause injuries if done improperly. To solve such issues, a **control using torque command** can be implemented. That is why the project was proposed to us.
+
+### Existing matter
+
+A complete model of the Reachy was lent to us for this project. The main developper on this part of the project, Remi Fabre, also gave us a link to a repository of a [firmware](https://github.com/RhobanProject/Dynaban) he, and some other developers of the Rhoban team, developed a few years ago.
+
+During this project, we will use the **motors** of the Reachy's shoulder (**MX-64** and **MX-106**), and the **pypot python library**. 
+
+### Goal 
+
+We implemented an **anti-gravity "finger"**, that is a one degree of freedom arm. Because of a lack of time, we are only able to give leads for the implementation of a two-degree of freedom solution. The **expected output** is a program that when launched, enables position control with torque command on the finger.
 
 ## 🔎 Implemented approch
+
+
+### The mathematics behind it all
+
+### The motor caracterization
+
 
 Describe your **approach** and how you proceeded to solve the problems reported by the client
  the work to solve this problem.
