@@ -1,39 +1,83 @@
-# Name of my project
+# Anti-gravity finger
 
-**Description:** Template for deliverables of robotics projects at Bordeaux-INP.
-Replace this description by a sentence summarizing your project.
+**Description:** Project aiming to counter the effect of gravity on a one-degree of liberty arm (i.e finger) by programming a torque control command on Dynamixel motor.
 
-<img src="https://via.placeholder.com/900x300.png?text=Video+illustrating+your+project,+or+picture"> 
+<p style="text-align: center;">
+<img src="assets/demo.gif"> </p>
 
 [📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography) • [⚠️ Risk Analysis](docs/risk)
   
 ## 📄 This project in short
-This paragraph is for the visitors who fly over your work and cannot read the whole documentation. They dislike long texts.
 
-Be **concise** and **convincing** to show the potential of your project. Be **honest** and list the limitations.  
+In this project, you will find a **Python module** that allows you to control your **Dynamixel motor** with **torque commands**.
 
-* The context and the intented users
-* The problems solved by your projects
-* How it solves them
+
+* One degree of freedom available ;
+* Countering of friction based on Stribeck model ;
+* Use of pypot library ;
+* Constants available for Dynamixel MX-64 and Dynamixel MX-106 (code is available to determine constants for other models).
 
 ## 🚀 Quickstart (if relevant)
 
-* **Install instructions**: List of software/hardware dependencies, and instructions to install them if relevant
-* **Launch instructions**: Few lines of code to launch the main feature of your project
+### **Install instructions**:
 
-If this is written in user or dev docs, provide links.
+* Clone this repo
+```bash
+git clone https://github.com/Julienchh/antigravity-arm
+```
+
+
+* Create a conda environment with all the dependencies:
+```bash
+conda create -n antigravity-arm
+pip3 install numpy scipy pybullet matplotlib
+```
+
+
+### **Launch instructions**: Few lines of code to launch the main feature of your project
+
+* Connect your Dynamixel motor to your computer (don't forget to plug the power supply). Check the name of the device (often *ttyACMx* or *ttyUSBx*) with the following command:
+
+```bash
+$ ls /dev/tty*
+... /dev/ttyS3   /dev/ttyS8
+/dev/tty12  /dev/tty19  /dev/tty25  /dev/tty31  /dev/tty38  /dev/tty44  /dev/tty50  /dev/tty57  /dev/tty63  /dev/ttyS11  /dev/ttyS18  /dev/ttyS24  /dev/ttyS30  /dev/ttyS9
+/dev/tty13  /dev/tty2   /dev/tty26  /dev/tty32  /dev/tty39  /dev/tty45  /dev/tty51  /dev/tty58  /dev/tty7   /dev/ttyS12  /dev/ttyS19  /dev/ttyS25  /dev/ttyS31  /dev/ttyUSB0 # here, it is the last one 
+```
+* Activate your conda environment :
+```bash
+conda activate antigravity-arm
+```
+* Find your motor's ID with:
+```bash
+$ python3 -c "import pypot.dynamixel; dxl_io = pypot.dynamixel.Dxl320IO('/dev/ttyUSB0'); print(dxl_io.scan())"
+>>> [20]
+```
+* In the file `src/compensation.py`, change the following information according to your setup:
+
+```python
+DXL_ID = 20             # found just above
+PORT = "/dev/ttyUSB0"   # found with the ls command 
+MASS = 0.08             # Object mass attached to motor (in kg)
+DISTANCE = 0.25         # Center of mass of the object attacher to motor
+OFFSET = 90.            # Offset in degrees : the angle value when the object attached to the motor is pointing downwards (minimal torque value)
+```
+
+* Launch the program and enjoy the anti-gravity finger !
+
+```bash
+python3 src/compensation.py
+```
 
 ## 🔍 About this project
 
 |       |        |
 |:----------------------------:|:-----------------------------------------------------------------------:|
-| 💼 **Client**                |  Name of your Client *(1)*                                              |
-| 🔒 **Confidentiality**       | **Public** or **Private** *(1)*                                         |
-| ⚖️ **License**               |  [Choose a license](https://choosealicense.com/) *(1)*                  |
-| 👨‍👨‍👦 **Authors**               |  Student names, with a link to their social media profile or website    |
+| 💼 **Client**                |  [Pollen Robotics](https://www.pollen-robotics.com/)                                              |
+| 🔒 **Confidentiality**       | **Public**                                          |
+| ⚖️ **License**               |  [Choose a license](https://choosealicense.com/)                  |
+| 👨‍👨‍👦 **Authors**               |  Matteo Caravati, Julien Chabrier, [Nicolas Gry](https://www.linkedin.com/in/nicolas-gry/)    |
 
-
-*(1) Refer to your client to make a choice. Then update the repository accordingly: the visibility in the settings and replace the [LICENSE](./LICENSE) file.*
 
 ## ✔️ Additional advices
 
