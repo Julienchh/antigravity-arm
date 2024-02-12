@@ -29,7 +29,7 @@ git clone https://github.com/Julienchh/antigravity-arm
 * Create a conda environment with all the dependencies:
 ```bash
 conda create -n antigravity-arm
-pip3 install numpy scipy matplotlib pypot_gregwar
+pip3 install numpy scipy matplotlib pypot
 ```
 
 
