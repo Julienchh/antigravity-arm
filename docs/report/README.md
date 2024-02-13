@@ -1,7 +1,7 @@
 
 
 # 📖 Report
-## ⁉️ Specifications
+## ⁉️ Specifigcations
 
 First, let us introduce the ins and outs of the subject at hand: the anti-gravity arm. That is, we present what was demanded of us and why, and what was expected to come out of this work.
 
@@ -55,6 +55,8 @@ $L$ | Solid's length | $m$
 
 ### 📐 The mathematics behind it all 
 
+#### ⚛️ Physics
+
 The finger is crafted with a Dynamixel motor MX-106. Attached to its shaft is a metal ruler of known dimensions $l\times L \times e$ and mass $m$.
 
 The situation can be modelled as a rectangular prism attached to its end to the motor shaft as presented on the following figure :
@@ -67,7 +69,7 @@ The situation can be modelled as a rectangular prism attached to its end to the 
 The torque needed by the motor to overcome gravity is the following :
 $$T_m = T_s + T_f$$
 
-where $T_s$ and $T_f$ are respectively the inertial torque and the friction torque.
+where $T_s$ a nd $T_f$ are respectively the inertial torque and the friction torque.
 
 In this situation, the intertial torque is the following:
 
@@ -90,17 +92,55 @@ The friction torque can be modelled according to different models, more or less 
 $$T_{f}=f_{C}\operatorname{sgn}({\omega})+(f_{s}-f_{C})e^{-\left({\omega}/{\omega_s}\right)^{2}}+b{\omega} 
 $$
 
+* $f_s$ corresponds to the stiction torque, that is the torque needed to overcome the static friction ;
+* $f_C$ corresponds to the dynamic friction torque, that is the torque needed to counter the dynamic friction;
+* $w_s$ is the Stribeck velocity;
+* $b$ is the viscous friction coefficient.
+  
 Notably, the viscous friction torque at a constant non-zero speed can be expressed as follows :
 
 $$T_m = b \omega$$
 
+#### 🦾 Electronics
+ 
+Once the physical models are understood, it is time to link them to the underlying electronics models. That is, to send a torque command to a motor, we need to communicate with it in a way it understands. The three main equations to remember are the following ones :
+
+* Motor torque and link with its current 
+$$ T_m = K_m i $$
+
+* Motor tension
+$$ U = Ri + e $$
+
+* Back EMF
+$$e = K_m \omega_m $$
+
+In these equations, $K_m$ is the motor torque constant and $R$ is the motor resistance. With this in mind, one can control the motor either in tension command or in current command, with a values that are computed based on a target torque. The two possible commands are:
+
+* Tension command : $U = \dfrac{R T_m}{K_m} + e$
+
+* Current command : $i = \dfrac{T_m}{K_m}$
+
 ### ⚙️ The motor caracterization
 
+#### Motor constants
 
-Describe your **approach** and how you proceeded to solve the problems reported by the client
- the work to solve this problem.
+The previous equations contain constants that are specific to each unit of motors. They need to be identified.
 
-Add links to relevant sections to your user documentation and developer documentation but do not duplicate information.
+We started by identifying the motor's constants that is, identifying $K_m$ and $R$. For $R$, a basic read of value using an Ohm-meter was conducted.
+
+For $K_m$, we relied on the equation $U = Ri + K_m \omega$; we sampled values of tension and according angular velocity on an empty motor and performed a linear regression. We thus tried to identify $m$ in a relation of the form $y=mx+p$ where $m=K_m$, $x=\omega$, $p=Ri$ and $U=y$.
+
+Such calculations can be performed by calling the function `caraterize` from our python module `lib.py`.
+
+#### Friction model
+
+In the file `src/benchmark_torque.ipynb`, we tried to fit several models using `curve_fit` from `scipy.optimize`.
+
+As discussed ealier, we opted for the Coulomb-Stribeck model which we managed to fit with satisfying results:
+
+![img](../../assets/stribeck_model_fitting.png)
+
+Further model fitting discussion are detailed in said file.
 
 ## 📈 Analysis of results
 
