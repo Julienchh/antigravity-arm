@@ -51,16 +51,25 @@ def compute_gravity_torque(mass, gravity, distance):
     gravity_moment = mass * gravity * distance
     return gravity_moment
 
-def friction(x, a, b, c, d, e, f, g, h):
+def friction(x):
     """
     Polynomial function to model the friction.
     """
+    a, b, c, d, e, f, g, h  = [-0.12127746, -0.56061302, -0.47001329, -0.26110969, -0.13974794, 0.59132029, -0.4856983, 0.27422605]
+
     return np.where(x < 0, a * x ** 3 + b * x ** 2 + c * x + d, np.where(x > 0, e * x ** 3 + f * x ** 2 + g * x + h, 0))
+
+def stribeck_model(omega):
+    dynamic_friction_torque = -0.0011290596938334557
+    stiction_torque = 0.22047280333906938
+    stribeck_velocity = 0.3338122103926749
+    viscous_friction_coefficient = 0.2392765860799163
+
+    return (dynamic_friction_torque * np.sign(omega) + (stiction_torque - dynamic_friction_torque) * np.exp(-(omega / stribeck_velocity) ** 2)) * np.sign(omega) + dynamic_friction_torque + viscous_friction_coefficient * omega
+
 
 def adjust_motor_position(motor):
     global last_position
-    coeffs = [-0.12127746, -0.56061302, -0.47001329, -0.26110969, -0.13974794, 0.59132029, -0.4856983, 0.27422605]
-
 
     position = motor.position +OFFSET
     current_position = round(position, 1)
@@ -69,7 +78,7 @@ def adjust_motor_position(motor):
 
     gravity_torque = compute_gravity_torque(
         MASS, GRAVITY, DISTANCE
-    ) + friction(motor.velocity * (np.pi / 30), *coeffs)
+    ) + stribeck_model(motor.velocity * (np.pi / 30))
 
     if position - last_position > eps:
         gravity_torque *= -math.cos(math.radians(position))
@@ -119,7 +128,7 @@ motor.torque_enabled = False
 # 16 = PWM, 1 = Velocity, 3 = Position
 motor.mode = motor_modes["pwm"]
 motor.torque_enabled = True
-motor.current = 0
+motor.motor_tension = 0
 
 OFFSET -= motor.position
 
@@ -137,6 +146,5 @@ try:
 
         
 except KeyboardInterrupt:
-    
     motor.motor_tension = 0
     motor.torque_enabled = False
