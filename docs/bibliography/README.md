@@ -2,6 +2,6 @@
 
 # 📖 Bibliography
 
-[Link to the bibliography report (*état de l'art*)](./our-bibliography.pdf)
+[Link to the bibliography report (*état de l'art*)](./bibliography.pdf)
 
-Add additional references here and link them to the project report with Mardown links.
+In this folder, you can find a `.pdf` version of the bibliography report.
