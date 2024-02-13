@@ -144,11 +144,13 @@ Further model fitting discussion are detailed in said file.
 
 ## 📈 Analysis of results
 
-**Qualify** and **quantify** your achievements. Make measurements from your work, e.g.:
+During the realization of this project, two compensations methods were implemented: a compensation controlling the motor using current, and another one controlling the motor using a given tension.
 
-* **User tests**: Setup a methodology to test the efficiency of your project against users. It may use pre-experiment and post-experiment questionnaires. The most users the better to draw meaningful conclusions from your experiments. Radar diagrams are good to summarize such results.
-* **Table of data**: Provide (short) extracts of data and relevant statistics (distribution, mean, standard deviation, p-values...)
-* **Plots**: Most data are more demonstrative when represented as plots. 
+Using a rectangular prism made out of aluminium with dimensions 50x2x3.4cm and weighting
+80g, we managed to obtain the following results:
 
-Draw conclusions, **interpret** the results and make recommandations to your client for your future of the work.
-It is totally fine to have results that are not as good as initially expected. Be honest and analyse why you did not manage to reach the objectives.
+- **Using tension-based control:** with this kind of control, the motor is able to support
+an object weighting 35.6g, but if we add 0.1g, it starts to fall slowly. The finger's motion
+is smooth when applying a force on it: pushing it with a piece of paper is enough.
+
+- **Using current-based control:** due to a mysterious reason, the sent current commands are not properly followed by the motor which applies way too much torque, making it difficult to move the aluminium bar.
