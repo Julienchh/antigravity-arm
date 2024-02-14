@@ -19,7 +19,7 @@ velocities = np.array(read_from_file("velocities.txt"))
 
 slope, intercept = np.polyfit(velocities, tensions, 1)
 
-print(slope)
+print(f"Torque constant: {slope}")
 
 plt.plot(velocities, tensions, "yo")
 plt.plot(velocities.astype(int), slope * velocities.astype(int) + intercept, color='red', label='Linear regression')

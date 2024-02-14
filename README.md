@@ -74,8 +74,8 @@ python3 src/compensation.py
 |:----------------------------:|:-----------------------------------------------------------------------:|
 | 💼 **Client**                |  [Pollen Robotics](https://www.pollen-robotics.com/)                                              |
 | 🔒 **Confidentiality**       | **Public**                                          |
-| ⚖️ **License**               |  [Choose a license](https://choosealicense.com/)                  |
-| 👨‍👨‍👦 **Authors**               |  Matteo Caravati, Julien Chabrier, [Nicolas Gry](https://www.linkedin.com/in/nicolas-gry/)    |
+| ⚖️ **License**               |  GNU GPLv3                  |
+| 👨‍👨‍👦 **Authors**               |  [Matteo Caravati](https://www.linkedin.com/in/mcaravati/), Julien Chabrier, [Nicolas Gry](https://www.linkedin.com/in/nicolas-gry/)    |
 
 
 ## ✔️ Additional advices

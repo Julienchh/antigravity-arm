@@ -5,6 +5,7 @@ from math import floor
 import numpy as np
 from time import sleep
 from sympy.physics.units import amperes, volts
+from sys import stderr
 
 NB_SAMPLES = 5
 
@@ -177,7 +178,6 @@ class Motor:
         if self.mode != 16: # Control is done via PWM only
             return
 
-        # print(f"Back emf : {self.back_emf} rad/s")
         self.motor_tension = (value / self._torque_constant) * self._resistance + self.back_emf
 
     @property
@@ -263,7 +263,7 @@ class Motor:
     @pwm_limit.setter
     def pwm_limit(self, value) -> None:
         if value > 885:
-            print(f"[PWM Limit] Value too high: {value}")
+            print(f"[PWM Limit] Value too high: {value}", file=stderr)
             return
 
         self._write_packet(self._control_table["pwm_limit"], value)
