@@ -73,15 +73,15 @@ where $T_s$ a nd $T_f$ are respectively the inertial torque and the friction tor
 
 In this situation, the intertial torque is the following:
 
-$$T_s = -m\ g\ R\ cos(q)$$
+$$T_s = -m\ g\ G\ cos(q)$$
 
-where $R$ is the center of mass. This one can also be expressed along the following equation :
+where $G$ is the center of mass. This one can also be expressed along the following equation :
 
-$$R = \dfrac{1}{m} {\int\int\int}_V \rho(r)r\mathrm{d}V $$
+$$G = \dfrac{1}{m} {\int\int\int}_V \rho(r)r_\Delta\mathrm{d}V $$
 
 In the case of a homogeneously distributed ruler, one gets the following:
 
-$$\dfrac{1}{m} {\int\int\int}_V \rho(r)r\mathrm{d}V = \dfrac{el\rho}{m} \int_0^L r\mathrm{d}r = \dfrac{L}{2}$$
+$$\dfrac{1}{m} {\int\int\int}_V \rho(r)r_\Delta\mathrm{d}V = \dfrac{el\rho}{m} \int_0^L r_\Delta\mathrm{d}r = \dfrac{L}{2}$$
 
 So the actual inertial torque in this model can be expressed as follows:
 
