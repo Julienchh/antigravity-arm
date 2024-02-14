@@ -4,7 +4,7 @@
 
 ![demo](https://raw.githubusercontent.com/Julienchh/antigravity-arm/master/assets/demo.gif)
 
-[📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography) • [⚠️ Risk Analysis](docs/risk)
+[👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography)
   
 ## 📄 This project in short
 
