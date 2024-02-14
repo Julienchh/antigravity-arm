@@ -1,7 +1,7 @@
 
 
 # 📖 Report
-## ⁉️ Specifigcations
+## ⁉️ Specifications
 
 First, let us introduce the ins and outs of the subject at hand: the anti-gravity arm. That is, we present what was demanded of us and why, and what was expected to come out of this work.
 
