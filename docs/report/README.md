@@ -153,4 +153,4 @@ Using a rectangular prism made out of aluminium with dimensions 50x2x3.4cm and w
 an object weighting 35.6g, but if we add 0.1g, it starts to fall slowly. The finger's motion
 is smooth when applying a force on it: pushing it with a piece of paper is enough.
 
-- **Using current-based control:** due to a mysterious reason, the sent current commands are not properly followed by the motor which applies way too much torque, making it difficult to move the aluminium bar.
+- **Using current-based control:** with this kind of control, pushing the bar in a clock wise direction (when facing the shaft of the motor) is harder than pushing it counter clock wise; there is also more resistance than with the tension control.
