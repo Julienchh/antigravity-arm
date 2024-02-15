@@ -170,8 +170,8 @@ class Motor:
         if self.mode != 0: # Control via current only
             return
 
+        self.motor_tension = (value / self._torque_constant) * self._resistance + self.back_emf
         self.current = value / self._torque_constant
-    
 
     @torque.setter
     def torque(self, value) -> None:
